@@ -1,0 +1,8 @@
+.body-container {
+    background: gray;
+    display: grid;
+    grid-template-columns: 2fr 7fr 7fr;
+    grid-template-rows: 1fr;
+    grid-column: 1 / 4;
+    grid-row: 2/ 4;
+}

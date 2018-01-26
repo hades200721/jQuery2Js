@@ -1,0 +1,38 @@
+.left-panel {
+    background-color: rgb(33, 37, 43);
+    color: rgb(157, 165, 180);
+    display: grid;
+    position: relative;
+    transition: transform 0.25s ease-in-out;
+}
+
+.left-panel.collapse {
+    width: 20px;
+}
+
+.settings {
+    flex: 1 1 auto;
+    margin-top: 10px;
+}
+
+.footer {
+    background-color: rgb(24, 26, 31);
+    padding: 1rem 1.5rem;
+}
+
+.slideBtn {
+    right: -2rem;
+    height: 5rem;
+    width: 3rem;
+    top: calc(50% - 2.5rem);
+    border-top-right-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: rgb(33, 37, 43);
+    color: rgb(157, 165, 180);
+}

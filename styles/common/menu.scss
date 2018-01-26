@@ -1,0 +1,36 @@
+a {
+    padding: 16px 10px;
+    text-decoration: none;
+}
+
+body a:hover,
+body a:active {
+    text-decoration: none;
+}
+
+body a:focus {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.topBar {
+    align-items: center;
+    background: #f5da55;
+    border-bottom-width: 2px;
+    border-color: #323330;
+    display: flex;
+    flex-flow: row nowrap;
+    font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    border-bottom-width: 2px;
+    left: 0;
+    right: 0;
+    grid-column: 1 / 4;
+}
+
+.topBar a:first-of-type {
+    margin-left: 20%;
+}

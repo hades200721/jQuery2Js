@@ -1,24 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import {AppContainer} from 'react-hot-loader'
-import Routes from './routes'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {AppContainer} from 'react-hot-loader';
+import { BrowserRouter } from 'react-router-dom';
+import App from './app';
+import Routes from './routes';
 
 ReactDOM.render(
-  <AppContainer>
-      <Routes />
-  </AppContainer>,
-  document.getElementById('app')
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById('container')
 );
-
-// Hot Module Replacement API
-if (module.hot) {
-  module.hot.accept('./app', () => {
-    const NextApp = require('./app').default;
-    ReactDOM.render(
-      <AppContainer>
-        <NextApp/>
-      </AppContainer>,
-      document.getElementById('app')
-    );
-  });
-}

@@ -1,16 +1,13 @@
 import React from 'react';
-import Navigation from './components/Navigation';
+import MenuBar from './components/menu/menu';
+import Main from './main';
 import 'normalize.css';
 import 'styles/index.scss';
 
 const App = () => (
   <div className='App'>
-    <Navigation/>
-    <div>
-      <h1>It Works!</h1>
-      <p>This React project just works including <span className="redBg">module</span> local styles.</p>
-      <p>Enjoy!</p>
-    </div>
+    <MenuBar />
+     <Main />
   </div>
 );
 

@@ -1,8 +1,16 @@
 body {
-  background: #ece7e7;
+    background: #ece7e7;
 }
 
 .small-img {
-  display: block;
-  width: 25%;
+    display: block;
+    width: 25%;
+}
+
+.App {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 2fr 7fr 7fr;
+    grid-template-rows: 1fr 10fr 1fr;
 }
