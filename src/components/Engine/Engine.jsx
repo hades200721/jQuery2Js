@@ -11,7 +11,7 @@ export default class Engine extends React.Component {
 	}
 	render() {
 		var { aaa, bbb, ccc } = this.props;
-		return <div className="body-container">
+		return <div className="body-container user-select-none">
 				<LeftBar></LeftBar>
 				<Convertor></Convertor>
 		</div>;
