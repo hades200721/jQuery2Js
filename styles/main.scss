@@ -1,5 +1,9 @@
 body {
-    background: #ece7e7;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #333;
+    background-color: #fff;
 }
 
 .small-img {
@@ -12,5 +16,5 @@ body {
     width: 100vw;
     height: 100vh;
     grid-template-columns: 2fr 7fr 7fr;
-    grid-template-rows: 1fr 10fr 1fr;
+    grid-template-rows: auto 1fr;
 }

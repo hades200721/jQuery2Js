@@ -21,8 +21,8 @@ export default class LeftBar extends React.Component {
 		return { };
 	}
 	render() {
-		return <div ref="slider" className={'left-panel ' + (this.state.open ? 'open': 'close')}>
-			<div>
+		return <div ref="slider" className={'flex flex-column left-panel ' + (this.state.open ? 'open': 'close')}>
+			<div className="flex-auto">
 				<DropDown title="Settings" options={['Evaluate', 'Minify', 'Prettify']}> </DropDown>
 				<DropDown title="Presets" options={['White spaces', 'Line Wrap', 'Line Numbers', 'File Size']}> </DropDown>
 				<DropDown title="Env Preset" options={['White spaces', 'Line Wrap', 'Line Numbers', 'File Size']}> </DropDown>

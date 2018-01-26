@@ -9,6 +9,6 @@ export default class SvgIcon extends React.Component {
 			"twitter": require("../assets/icons/twitter.svg"),
 			"git": require("../assets/icons/git.svg"),
 		}[name];
-		return <img src={url} height="25" width="25" />;
+		return <img src={url} width={this.props.width || 25} height={this.props.height || 25} />;
 	}
 }
