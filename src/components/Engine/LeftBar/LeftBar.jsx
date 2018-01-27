@@ -11,18 +11,17 @@ export default class LeftBar extends React.Component {
         };
     }
 
-    togglePanel() {
-        this.setState(prevState => ({
-			open: !prevState.open
-		  }));
+    togglePanel(e) {
+		e.preventDefault();
+		this.props.view();
 	};
 	
 	static getProps(stores, params) {
 		return { };
 	}
 	render() {
-		return <div ref="slider" className={'flex flex-column left-panel ' + (this.state.open ? 'open': 'close')}>
-			<div className="flex-auto">
+		return <div ref="slider" className="flex flex-column left-panel">
+			<div className="flex-auto overflow-hidden">
 				<DropDown title="Settings" options={['Evaluate', 'Minify', 'Prettify']}> </DropDown>
 				<DropDown title="Presets" options={['White spaces', 'Line Wrap', 'Line Numbers', 'File Size']}> </DropDown>
 				<DropDown title="Env Preset" options={['White spaces', 'Line Wrap', 'Line Numbers', 'File Size']}> </DropDown>
@@ -32,7 +31,9 @@ export default class LeftBar extends React.Component {
 					<path fill="currentcolor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"></path>
 				</svg>
 			</div>
-			<div className="footer" title="v0.1">v0.1</div>
+			<div className="footer overflow-hidden">
+				<div className="footer-info" title="v0.1"> v0.1 </div>
+			</div>
 		</div>;
 	}
 }

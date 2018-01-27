@@ -16,8 +16,11 @@
 }
 
 .footer {
-    background-color: rgb(24, 26, 31);
-    padding: 1rem 1.5rem;
+    width: inherit;
+    .footer-info {
+        background-color: rgb(24, 26, 31);
+        padding: 1rem 1.5rem;
+    }
 }
 
 .slide-btn {
@@ -35,4 +38,12 @@
     cursor: pointer;
     background-color: rgb(33, 37, 43);
     color: rgb(157, 165, 180);
+}
+
+.closed .slide-btn:hover {
+    transform: translateX(5px);
+}
+
+.closed .slide-btn svg {
+    transform: rotate(180deg);
 }
