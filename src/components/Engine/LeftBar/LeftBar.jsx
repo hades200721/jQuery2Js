@@ -23,8 +23,9 @@ export default class LeftBar extends React.Component {
 		return <div ref="slider" className="flex flex-column left-panel">
 			<div className="flex-auto overflow-hidden">
 				<DropDown title="Settings" options={['Evaluate', 'Minify', 'Prettify']}> </DropDown>
-				<DropDown title="Presets" options={['White spaces', 'Line Wrap', 'Line Numbers', 'File Size']}> </DropDown>
-				<DropDown title="Env Preset" options={['White spaces', 'Line Wrap', 'Line Numbers', 'File Size']}> </DropDown>
+				<DropDown title="Presets" options={['Show Gutter', 'Line Wrap', 'Show Line Numbers', 
+													'Highlight Active Line', 'Show Print Margin', 'File Size']}> </DropDown>
+				<DropDown title="Advanced setting" options={['Enable Basic Autocomplete', 'Enable Snippets', 'Font Size', 'Theme']}> </DropDown>
 			</div>
 			<div className="slide-btn" onClick={this.togglePanel}>
 				<svg style={{width: '2rem', height: '2rem'}} viewBox="0 0 24 24">

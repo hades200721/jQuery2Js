@@ -1,6 +1,7 @@
 import React from "react";
 import LeftBar from './LeftBar/LeftBar';
-import Convertor from './Convertor/Convertor';
+import Jqueryinput from './jQueryInput/jQueryInput';
+import Jsoutput from './jsOutput/jsOutput';
 import styles from './engine.scss';
 
 export default class Engine extends React.Component {
@@ -9,7 +10,7 @@ export default class Engine extends React.Component {
 		this.state = {
 			opened: true
 		}
-	}
+	}	
 
 	static getProps(stores, params) {
 		return {
@@ -27,7 +28,8 @@ export default class Engine extends React.Component {
 		var { aaa, bbb, ccc } = this.props;
 		return <div className={'body-container user-select-none ' + (this.state.opened ? 'open' : 'closed')}>
 			<LeftBar view={this.changeView.bind(this)}></LeftBar>
-			<Convertor></Convertor>
+			<Jqueryinput/>			
+			<Jsoutput/>
 		</div>;
 	}
 }

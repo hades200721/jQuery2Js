@@ -4,6 +4,7 @@
     display: grid;
     position: relative;
     transition: transform 0.25s ease-in-out;
+    z-index: 2;
 }
 
 .left-panel.collapse {
