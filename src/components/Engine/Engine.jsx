@@ -8,7 +8,8 @@ export default class Engine extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			opened: true
+			opened: true,
+			textOutput: 'vv'
 		}
 	}	
 
@@ -24,12 +25,17 @@ export default class Engine extends React.Component {
 		})
 	}
 
+	textChanged(val) {
+		this.setState({
+			textOutput: val
+		})
+	}
+
 	render() {
-		var { aaa, bbb, ccc } = this.props;
 		return <div className={'body-container user-select-none ' + (this.state.opened ? 'open' : 'closed')}>
 			<LeftBar view={this.changeView.bind(this)}></LeftBar>
-			<Jqueryinput/>			
-			<Jsoutput/>
+			<Jqueryinput onTextChange={this.textChanged.bind(this)}/>			
+			<Jsoutput output={this.state.textOutput}/>
 		</div>;
 	}
 }

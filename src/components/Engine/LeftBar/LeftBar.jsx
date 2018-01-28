@@ -20,7 +20,7 @@ export default class LeftBar extends React.Component {
 		return { };
 	}
 	render() {
-		return <div ref="slider" className="flex flex-column left-panel">
+		return <div ref="slider" className="z2 flex flex-column left-panel">
 			<div className="flex-auto overflow-hidden">
 				<DropDown title="Settings" options={['Evaluate', 'Minify', 'Prettify']}> </DropDown>
 				<DropDown title="Presets" options={['Show Gutter', 'Line Wrap', 'Show Line Numbers', 
