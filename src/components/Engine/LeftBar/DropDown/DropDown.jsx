@@ -6,6 +6,7 @@ export default class DropDown extends React.Component {
     constructor(props) {
         super(props);
         this.toggleOptions = this.toggleOptions.bind(this);
+        this.toggleCheckbox = this.toggleCheckbox.bind(this);
         this.state = {
             optionsCollapse: true,
         };
@@ -17,14 +18,19 @@ export default class DropDown extends React.Component {
         }));
     };
 
+    toggleCheckbox(e) {
+        this.props.toogleCheckbox(e._targetInst.memoizedProps.val, e.target.checked);
+    }
+
     render() {
         var indents = [];
         if (this.props.options) {
             for (var i = 0; i < this.props.options.length; i++) {
                 indents.push(
-                    <label key={this.props.options[i]} >
-                        <input type="checkbox" className="checkBox" style={{ margin: '4px 10px 0 0' }} value="on" />
-                        {this.props.options[i]}
+                    <label key={this.props.options[i].key}>
+                        <input type="checkbox" className="checkBox" label={this.props.options[i].label}
+                               val={this.props.options[i].key} value="on" onChange={this.toggleCheckbox}/>
+                        {this.props.options[i].label}
                     </label>);
             }
         }

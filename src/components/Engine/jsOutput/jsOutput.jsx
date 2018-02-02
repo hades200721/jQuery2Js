@@ -20,6 +20,7 @@ export default class Jsoutput extends React.Component {
                 mode="javascript"
                 initialContent="hello world!"
                 theme="tomorrow"
+                readOnly="true"
                 name="JSOutputEditor"
                 style={{height: '100%', width: 'auto', fontSize: '16px'}}
 				editorProps={{ $blockScrolling: true }}

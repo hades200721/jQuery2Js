@@ -12,20 +12,27 @@ export default class LeftBar extends React.Component {
     }
 
     togglePanel(e) {
-		e.preventDefault();
 		this.props.view();
 	};
+
+	toogleCheckbox(prop, val) {
+		this.props.modifiedEditor(prop, val);
+	};
 	
-	static getProps(stores, params) {
-		return { };
-	}
 	render() {
 		return <div ref="slider" className="z2 flex flex-column left-panel">
 			<div className="flex-auto overflow-hidden">
-				<DropDown title="Settings" options={['Evaluate', 'Minify', 'Prettify']}> </DropDown>
-				<DropDown title="Presets" options={['Show Gutter', 'Line Wrap', 'Show Line Numbers', 
-													'Highlight Active Line', 'Show Print Margin', 'File Size']}> </DropDown>
-				<DropDown title="Advanced setting" options={['Enable Basic Autocomplete', 'Enable Snippets', 'Font Size', 'Theme']}> </DropDown>
+				<DropDown title="Settings" options={
+					[{key: 'Evaluate', label: 'Evaluate'}, {key: 'Minify',  label: 'Minify'},
+					{key: 'Prettify',  label: 'Prettify'}]}> </DropDown>
+				<DropDown title="Presets" options={
+					[{key: 'gutter', label: 'Show Gutter'}, {key: 'LineWrap', label: 'Line Wrap'},
+					{key: 'showLineNumbers', label: 'Show Line Numbers'}, {key: 'highlightActiveLine', label: 'Highlight Active Line'},
+					{key: 'ShowPrintMargin', label: 'Show Print Margin'}, {key: 'FileSize', label: 'File Size'}]}
+													toogleCheckbox={this.toogleCheckbox.bind(this)}> </DropDown>
+				<DropDown title="Advanced setting" options={[{key: 'EnableBasicAutocomplete', label: 'Enable Basic Autocomplete'},
+				{key: 'EnableSnippets', label: 'Enable Snippets'}, {key:'FontSize' ,label: 'Font Size'},
+				{key: 'Theme', label: 'Theme'}]}> </DropDown>
 			</div>
 			<div className="slide-btn" onClick={this.togglePanel}>
 				<svg style={{width: '2rem', height: '2rem'}} viewBox="0 0 24 24">
