@@ -2,6 +2,7 @@
     background-color: rgb(33, 37, 43);
     color: rgb(157, 165, 180);
     display: grid;
+    font-family: monospace;
     position: relative;
     transition: transform 0.25s ease-in-out;
 }
@@ -19,7 +20,7 @@
     width: inherit;
     .footer-info {
         background-color: rgb(24, 26, 31);
-        padding: 1rem 1.5rem;
+        padding: 0.5rem 1.5rem;
     }
 }
 

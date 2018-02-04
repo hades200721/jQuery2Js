@@ -13,12 +13,12 @@ export default class Jqueryinput extends React.Component {
     }
 
     onChange(text, event) {
-        const editor = this.ace.editor; // The editor object is from Ace's API
+        const editor = this.ace.editor;
         this.props.onTextChange(text);
     }
 
     render() {
-        return <div className="z1 editor-container">
+        return <div className="z1 relative editor-container">
             <AceEditor
                 mode="javascript"
                 theme="tomorrow"
@@ -30,6 +30,7 @@ export default class Jqueryinput extends React.Component {
                 value={this.props.textVal}
                 ref={instance => { this.ace = instance; }} // Let's put things into scope
             />
+            <div className="absolute bottom-0 right-0 mb1 mr2 text-size text-size">{this.props.textVal.length} bytes</div>
         </div>;
     }
     

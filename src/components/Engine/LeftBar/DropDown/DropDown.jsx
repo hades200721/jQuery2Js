@@ -27,7 +27,7 @@ export default class DropDown extends React.Component {
         if (this.props.options) {
             for (var i = 0; i < this.props.options.length; i++) {
                 indents.push(
-                    <label key={this.props.options[i].key}>
+                    <label className="c-pointer" key={this.props.options[i].key}>
                         <input type="checkbox" className="checkBox" label={this.props.options[i].label}
                                val={this.props.options[i].key} value="on" onChange={this.toggleCheckbox}/>
                         {this.props.options[i].label}

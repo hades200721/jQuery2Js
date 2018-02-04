@@ -15,20 +15,21 @@ export default class Jsoutput extends React.Component {
     }
 
     render() {
-        return <div className="output-container">
-        <AceEditor ref="outputEditor"
+        return <div className="relative output-container">
+            <AceEditor
                 mode="javascript"
-                initialContent="hello world!"
                 theme="tomorrow"
-                readOnly="true"
+                readOnly={true}
                 name="JSOutputEditor"
-                style={{height: '100%', width: 'auto', fontSize: '16px'}}
-				editorProps={{ $blockScrolling: true }}
-			/>
+                style={{ height: '100%', width: 'auto', fontSize: '16px' }}
+                editorProps={{ $blockScrolling: true }}
+                ref={instance => { this.ace = instance; }} // Let's put things into scope
+            />
+            <div className="absolute bottom-0 right-0 mb1 mr2 text-size">{this.props.output.length} bytes</div>
         </div>;
     }
 
     componentDidUpdate() {
-        this.refs.outputEditor.editor.getSession().setValue(this.props.output);
+        this.ace.editor.getSession().setValue(this.props.output);
     }
 }

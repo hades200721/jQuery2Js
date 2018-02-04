@@ -1,24 +1,25 @@
 .topBar {
     align-items: center;
     background: #f5da55;
-    border-bottom-width: 2px;
-    border-color: #323330;
+    border-bottom: 2px solid #323330;
     display: flex;
     flex-flow: row nowrap;
     font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 600;
-    border-style: solid;
     left: 0;
+    line-height: 50px;
     right: 0;
     grid-column: 1 / 4;
     a {
         height: 100%;
-        line-height: 50px;
     }
     a:first-of-type {
-        margin-left: 20%;
+        font: bold 20px Shojumaru;
+        margin-right: 2%;
+        margin-left: 15%;
+        transform: rotate(-4deg);
     }
-    a:hover {
+    .link:hover {
         color: #f7de65;
         background-color: #6c6e66;
     }

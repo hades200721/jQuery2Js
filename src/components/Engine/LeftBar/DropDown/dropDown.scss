@@ -22,9 +22,10 @@
 }
 
 .arrow {
-    stroke: #eee;
-    overflow: hidden;
     height: 20px;
+    overflow: hidden;
+    stroke: #eee;
+    transition: transform 250ms ease-in-out;
     width: 20px;
 }
 
@@ -36,7 +37,7 @@
     border-top: 1px solid #181a1f;
     display: flex;
     flex-direction: column;
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 0 0 0.6rem;
 }
 
 .checkBox {

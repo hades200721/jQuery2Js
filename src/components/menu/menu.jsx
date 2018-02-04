@@ -21,7 +21,7 @@ export default class MenuBar extends React.Component {
 					<NavLink
 						exact
 						style={links[i].customStyle}
-						className="px1"
+						className="link px1"
 						activeClassName="selected"
 						key={links[i].title}
 						to={links[i].path}>
@@ -30,13 +30,13 @@ export default class MenuBar extends React.Component {
 		}
 		return <div className="topBar">
 			{navLinks}
-			<a href="https://slack.babeljs.io/" className="px1" title="Join us on Slack">
+			<a href="https://slack.babeljs.io/" className="line-height-1 px1" title="Join us on Slack">
 				<SvgIcon name="slack" width="20" height="20" />
 			</a>
-			<a href="https://twitter.com/babeljs" className="px1" title="Follow us on Twitter">
+			<a href="https://twitter.com/babeljs" className="line-height-1 px1" title="Follow us on Twitter">
 				<SvgIcon name="twitter" width="20" height="20" />
 			</a>
-			<a href="https://github.com/babel/babel" className="px1" title="Contribute on GitHub">
+			<a href="https://github.com/babel/babel" className="line-height-1 px1" title="Contribute on GitHub">
 				<SvgIcon name="git" width="20" height="20" />
 			</a>
 		</div>;
