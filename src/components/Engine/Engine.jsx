@@ -40,7 +40,7 @@ export default class Engine extends React.Component {
 			<LeftBar view={this.changeView.bind(this)} modifiedEditor={this.setAceEditor.bind(this)}></LeftBar>
 			<Jqueryinput aceOptions={this.state.aceOptions}
 				onTextChange={this.textChanged.bind(this)} textVal={this.state.textOutput} />
-			<Jsoutput output={this.state.textOutput} />
+			<Jsoutput aceOptions={this.state.aceOptions} output={this.state.textOutput} />
 		</div>;
 	}
 }

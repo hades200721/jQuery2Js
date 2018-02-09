@@ -1,9 +1,13 @@
 import React from "react";
 import brace from 'brace';
 import AceEditor from 'react-ace';
+
+import 'brace/snippets/html';
+import 'brace/ext/language_tools';
 import 'brace/mode/javascript';
 import 'brace/theme/tomorrow';
 import jQueryInputStyles from "./jQueryInput.scss";
+var aceConnector = require('../../../services/aceConnector');
 
 export default class Jqueryinput extends React.Component {
 
@@ -45,31 +49,8 @@ export default class Jqueryinput extends React.Component {
         return true;
     }
 
-    componentWillReceiveProps(prevProps, prevState) {        
-        if (!prevProps.aceOptions) { return true; }
-        let val = prevProps.aceOptions.value;
-        let prop = prevProps.aceOptions.prop;
-		switch (prop) {
-            case 'gutter': {
-                this.ace.editor.setOption('showGutter', val);
-            }
-            case 'LineWrap': {
-                this.ace.editor.setOption('setWrapBehavioursEnabled', val);
-            }
-            case 'showLineNumbers': {
-                this.ace.editor.setOption('showLineNumbers', val);
-            }
-            case 'highlightActiveLine': {
-                this.ace.editor.setOption('highlightActiveLine', val);
-            }
-            case 'showPrintMargin': {
-                this.ace.editor.setOption('showPrintMargin', val);
-            }  
-            
-            default: {
-                break;
-            }
-		}
+    componentWillReceiveProps(prevProps, prevState) {  
+        aceConnector.setAceOption(this.ace, prevProps, prevState)
     }
 
     shouldComponentUpdate(prevProps, prevState) {
