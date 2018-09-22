@@ -7,14 +7,23 @@ import 'brace/ext/language_tools';
 import 'brace/mode/javascript';
 import 'brace/theme/tomorrow';
 import jsOutputStyles from "./jsOutput.scss";
-var aceConnector = require('../../../services/aceConnector');
+let aceConnector = require('../../../services/aceConnector');
+let formatService = require('../../../services/formatService');
 
 export default class Jsoutput extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            format: 'Bytes',
+            isHidden: false
         };
+    }
+
+    toggleHidden () {
+        this.setState({
+            isHidden: !this.state.isHidden
+        });
     }
 
     render() {
@@ -28,15 +37,18 @@ export default class Jsoutput extends React.Component {
                 editorProps={{ $blockScrolling: true }}
                 ref={instance => { this.ace = instance; }} // Let's put things into scope
             />
-            <div className="absolute bottom-0 right-0 mb1 mr2 text-size">{this.props.output.length} bytes</div>
+            { !this.state.isHidden && <div className="absolute bottom-0 right-0 mb1 mr2 text-size">{this.props.output.length} {this.state.format}</div> }
         </div>;
     }
-
     componentDidUpdate() {
         this.ace.editor.getSession().setValue(this.props.output);
     }
 
-    componentWillReceiveProps(prevProps, prevState) {  
+    componentWillReceiveProps(prevProps, prevState) {
+        let outputPlainText = this.props.output;
+        this.setState({
+            format :formatService.sizeFormatSuffix(outputPlainText.length)
+        });
         aceConnector.setAceOption(this.ace, prevProps, prevState)
     }
 }

@@ -8,7 +8,7 @@ export default class DropDown extends React.Component {
         this.toggleOptions = this.toggleOptions.bind(this);
         this.toggleCheckbox = this.toggleCheckbox.bind(this);
         this.state = {
-            optionsCollapse: true,
+            optionsCollapse: false,
         };
     }
 
@@ -35,14 +35,14 @@ export default class DropDown extends React.Component {
             }
         }
         var options = null;
-        if (this.state.optionsCollapse) {
+        if (!this.state.optionsCollapse) {
             options = (
                 <div className="options">
                     {indents}
                 </div>
             );
         }
-        return <div>
+        return <div className={'dropDownSection ' + (this.state.optionsCollapse ? 'collapse' : '') }>
             <div className={'title ' + (this.state.optionsCollapse ? 'collapse' : '') } onClick={this.toggleOptions}>
                 <div className="text">{this.props.title}</div>
                 <svg className="arrow" viewBox="0 0 24 24">

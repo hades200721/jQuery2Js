@@ -4,9 +4,15 @@
     cursor: pointer;
     display: flex;
     flex-direction: row;
+    max-height: 500px;
     padding: 0.5rem 1rem;
     transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
-    &.collapse svg {
+    &.collapse{
+        svg {
+            transform: rotate(0deg);
+        }
+    }
+    svg {
         transform: rotate(-90deg);
     }
     &:hover {
@@ -18,7 +24,7 @@
 .text {
     font-size: 1rem;
     font-weight: bold;
-    flex: 1 1 0%;
+    flex: 1 1 0;
 }
 
 .arrow {
@@ -42,4 +48,12 @@
 
 .checkBox {
     transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+}
+
+.dropDownSection {
+    height: auto;
+    transition: height 2500ms ease-out;
+    &.collapse {
+        height: 50px;
+    }
 }

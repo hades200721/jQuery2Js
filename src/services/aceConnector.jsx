@@ -1,9 +1,16 @@
-var doSomething = function (num) {
-    debugger;
+let doSomething = function (num) {
+    
     return num + 1;
-}
+};
 
-var setAceOption = function (ace, prevProps, prevState) {
+/**
+ * function handling ace option ui/ux logic
+ * @param ace ace instence
+ * @param prevProps - previous property value
+ * @param prevState - object right now not in use
+ * @returns {boolean} true if handled with sucess, false otherwise
+ */
+let setAceOption = function (ace, prevProps) {
     if (!prevProps.aceOptions) { return true; }
     let val = prevProps.aceOptions.value;
     let prop = prevProps.aceOptions.prop;
@@ -13,7 +20,7 @@ var setAceOption = function (ace, prevProps, prevState) {
             break;
         }
         case 'LineWrap': {
-            ace.editor.setOption('setWrapBehavioursEnabled', val);
+            ace.editor.setOption('wrap', val);
             break;
         }
         case 'showLineNumbers': {
@@ -42,7 +49,8 @@ var setAceOption = function (ace, prevProps, prevState) {
             break;
         }
     }
-}
+    return true;
+};
 
 exports.doSomething = doSomething;
 exports.setAceOption = setAceOption;
