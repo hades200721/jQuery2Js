@@ -10,6 +10,7 @@ import jQueryInputStyles from "./jQueryInput.scss";
 
 var aceConnector = require('../../../services/aceConnector');
 let formatService = require('../../../services/formatService');
+let generalServices = require('../../../services/generalServices');
 
 export default class Jqueryinput extends React.Component {
 
@@ -41,7 +42,7 @@ export default class Jqueryinput extends React.Component {
                 value={this.props.textVal}
                 ref={instance => { this.ace = instance; }} // Let's put things into scope
             />
-            <div className="absolute bottom-0 right-0 mb1 mr2 text-size text-size">{this.props.textVal.length} {this.state.format}</div>
+            { !this.state.isHidden && <div className="absolute bottom-0 right-0 mb1 mr2 text-size text-size">{this.props.textVal.length} {this.state.format}</div> }
         </div>;
     }
     
@@ -57,7 +58,16 @@ export default class Jqueryinput extends React.Component {
     }
 
     componentWillReceiveProps(prevProps, prevState) {
-        aceConnector.setAceOption(this.ace, prevProps, prevState);
+        if (prevProps.aceOptions) { // set ace editor option
+            aceConnector.setAceOption(this.ace, prevProps, prevState);
+        } else {
+            if (prevProps.customFunction) {
+                let functionObj = generalServices[prevProps.customFunction.name];
+                if (functionObj) {
+                    functionObj.call(this, prevProps.customFunction.args);
+                }
+            }
+        }
     }
 
     shouldComponentUpdate(prevProps, prevState) {

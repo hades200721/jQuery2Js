@@ -9,6 +9,7 @@ import 'brace/theme/tomorrow';
 import jsOutputStyles from "./jsOutput.scss";
 let aceConnector = require('../../../services/aceConnector');
 let formatService = require('../../../services/formatService');
+let generalServices = require('../../../services/generalServices');
 
 export default class Jsoutput extends React.Component {
 
@@ -18,12 +19,6 @@ export default class Jsoutput extends React.Component {
             format: 'Bytes',
             isHidden: false
         };
-    }
-
-    toggleHidden () {
-        this.setState({
-            isHidden: !this.state.isHidden
-        });
     }
 
     render() {
@@ -49,6 +44,15 @@ export default class Jsoutput extends React.Component {
         this.setState({
             format :formatService.sizeFormatSuffix(outputPlainText.length)
         });
-        aceConnector.setAceOption(this.ace, prevProps, prevState)
+        if (prevProps.aceOptions) { // set ace editor option
+            aceConnector.setAceOption(this.ace, prevProps, prevState);
+        } else {
+            if (prevProps.customFunction) {
+                let functionObj = generalServices[prevProps.customFunction.name];
+                if (functionObj) {
+                    functionObj.call(this, prevProps.customFunction.args);
+                }
+            }
+        }
     }
 }

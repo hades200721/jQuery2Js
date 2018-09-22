@@ -18,8 +18,13 @@ export default class LeftBar extends React.Component {
         this.props.view();
     }
 
-    toogleCheckbox(prop, val) {
-        this.props.modifiedEditor(prop, val);
+    toogleCheckbox(prop, val, customFunctionObject = false) {
+        if (customFunctionObject) {
+            customFunctionObject.args.value = val;
+            this.props.customFunction(customFunctionObject);
+        } else {
+            this.props.modifiedEditor(prop, val);
+        }
     }
 
     render() {
@@ -35,15 +40,14 @@ export default class LeftBar extends React.Component {
                             {key: 'LineWrap', label: 'Line Wrap'},
                             {key: 'showLineNumbers', label: 'Show Line Numbers'},
                             {key: 'highlightActiveLine', label: 'Highlight Active Line'},
-                            {key: 'showPrintMargin', label: 'Show Print Margin'}]
-                    }
+                            {key: 'showPrintMargin', label: 'Show Print Margin'}]                    }
                               toogleCheckbox={this.toogleCheckbox.bind(this)}> </DropDown>
-                    <DropDown title="Advanced setting" options={[{key: 'autocompletion', label: 'Basic Autocomplete'},
+                    <DropDown title="Advanced setting" options={[
+                        {key: 'autocompletion', label: 'Basic Autocomplete'},
                         {key: 'enableSnippets', label: 'Enable Snippets'},
                         {key: 'FontSize', label: 'Font Size'},
-                        {key: 'FileSize', label: 'File Size'},
-                        {key: 'Theme', label: 'Theme'}]
-                    }
+                        {key: 'showFileSize', label: 'Show File Size', customFunction: { name: 'showFileSize', args: {} }},
+                        {key: 'Theme', label: 'Theme'}]                    }
                               toogleCheckbox={this.toogleCheckbox.bind(this)}> </DropDown>
                 </div>
             )}

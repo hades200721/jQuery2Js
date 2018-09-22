@@ -19,7 +19,7 @@ export default class DropDown extends React.Component {
     };
 
     toggleCheckbox(e) {
-        this.props.toogleCheckbox(e._targetInst.memoizedProps.val, e.target.checked);
+        this.props.toogleCheckbox(e._targetInst.memoizedProps.val, e.target.checked, e._targetInst.memoizedProps.customfunction);
     }
 
     render() {
@@ -29,6 +29,8 @@ export default class DropDown extends React.Component {
                 indents.push(
                     <label className="c-pointer" key={this.props.options[i].key}>
                         <input type="checkbox" className="checkBox" label={this.props.options[i].label}
+                               customfunction={this.props.options[i].customFunction}
+                               checked={this.props.options[i].defaultChecked}
                                val={this.props.options[i].key} value="on" onChange={this.toggleCheckbox}/>
                         {this.props.options[i].label}
                     </label>);
