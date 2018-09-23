@@ -8,6 +8,7 @@ export default class LeftBar extends React.Component {
         this.togglePanel = this.togglePanel.bind(this);
         this.state = {
             open: true,
+            defaultValue: true
         };
     }
 
@@ -18,7 +19,7 @@ export default class LeftBar extends React.Component {
         this.props.view();
     }
 
-    toogleCheckbox(prop, val, customFunctionObject = false) {
+    toggleCheckbox(prop, val, customFunctionObject = false) {
         if (customFunctionObject) {
             customFunctionObject.args.value = val;
             this.props.customFunction(customFunctionObject);
@@ -28,27 +29,28 @@ export default class LeftBar extends React.Component {
     }
 
     render() {
-        return <div ref="slider" className="z2 flex flex-column left-panel">
+        return <div className="z2 flex flex-column left-panel">
             {this.state.open && (<div className="flex-auto overflow-hidden">
                     <DropDown title="Settings" options={
-                            [{key: 'Evaluate', label: 'Evaluate'},
-                            {key: 'Minify', label: 'Minify'},
-                            {key: 'Prettify', label: 'Prettify'}]}>
+                            [{key: 'Evaluate', label: 'Evaluate', value: false},
+                            {key: 'Minify', label: 'Minify', value: false, customFunction: {name: 'minifyCode', args: {}} },
+                            {key: 'Prettify', label: 'Prettify', value: false}]}
+                            toggleCheckbox={(prop, value, customF) => this.toggleCheckbox(prop, value, customF) }>
                     </DropDown>
-                    <DropDown title="Presets" options={
-                        [{key: 'gutter', label: 'Show Gutter'},
-                            {key: 'LineWrap', label: 'Line Wrap'},
-                            {key: 'showLineNumbers', label: 'Show Line Numbers'},
-                            {key: 'highlightActiveLine', label: 'Highlight Active Line'},
-                            {key: 'showPrintMargin', label: 'Show Print Margin'}]                    }
-                              toogleCheckbox={this.toogleCheckbox.bind(this)}> </DropDown>
+                    <DropDown title="Presets" options={[
+                            {key: 'gutter', label: 'Show Gutter', value: true},
+                            {key: 'LineWrap', label: 'Line Wrap', value: true},
+                            {key: 'showLineNumbers', label: 'Show Line Numbers', value: true},
+                            {key: 'highlightActiveLine', label: 'Highlight Active Line', value: true},
+                            {key: 'showPrintMargin', label: 'Show Print Margin', value: true} ]}
+                              toggleCheckbox={(prop, value, customF) => this.toggleCheckbox(prop, value, customF) }> </DropDown>
                     <DropDown title="Advanced setting" options={[
-                        {key: 'autocompletion', label: 'Basic Autocomplete'},
-                        {key: 'enableSnippets', label: 'Enable Snippets'},
-                        {key: 'FontSize', label: 'Font Size'},
-                        {key: 'showFileSize', label: 'Show File Size', customFunction: { name: 'showFileSize', args: {} }},
-                        {key: 'Theme', label: 'Theme'}]                    }
-                              toogleCheckbox={this.toogleCheckbox.bind(this)}> </DropDown>
+                        {key: 'autocompletion', label: 'Basic Autocomplete', value: false},
+                        {key: 'enableSnippets', label: 'Enable Snippets', value: false},
+                        {key: 'fontSize', label: 'Font Size', type: 'number', value: 24},
+                        {key: 'showFileSize', label: 'Show File Size', customFunction: { name: 'showFileSize', args: {} }, value: true},
+                        {key: 'Theme', label: 'Theme', type: 'dropDown', value: 'dark'}]                    }
+                              toggleCheckbox={(prop, value, customF) => this.toggleCheckbox(prop, value, customF) }> </DropDown>
                 </div>
             )}
             <div className="slide-btn" onClick={this.togglePanel}>
@@ -57,7 +59,7 @@ export default class LeftBar extends React.Component {
                 </svg>
             </div>
             <div className="footer overflow-hidden">
-                <div className="footer-info" title="v0.1"> v0.1</div>
+                <div className="footer-info" title="v0.2"> v0.2</div>
             </div>
         </div>;
     }

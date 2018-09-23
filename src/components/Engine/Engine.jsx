@@ -53,7 +53,7 @@ export default class Engine extends React.Component {
 					 customFunction={this.callbackFunction.bind(this)}
 					 modifiedEditor={this.setAceEditor.bind(this)}></LeftBar>
 			<Jqueryinput aceOptions={this.state.aceOptions} customFunction={this.state.customFunction}
-						onTextChange={this.textChanged.bind(this)} textVal={this.state.textOutput} />
+						onTextChange={this.textChanged.bind(this)} />
 			<Jsoutput aceOptions={this.state.aceOptions} customFunction={this.state.customFunction} output={this.state.textOutput} />
 		</div>;
 	}

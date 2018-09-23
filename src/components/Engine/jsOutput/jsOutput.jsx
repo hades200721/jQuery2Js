@@ -17,7 +17,8 @@ export default class Jsoutput extends React.Component {
         super(props);
         this.state = {
             format: 'Bytes',
-            isHidden: false
+            isHidden: false,
+            vanillaJSCode: ''
         };
     }
 
@@ -32,17 +33,18 @@ export default class Jsoutput extends React.Component {
                 editorProps={{ $blockScrolling: true }}
                 ref={instance => { this.ace = instance; }} // Let's put things into scope
             />
-            { !this.state.isHidden && <div className="absolute bottom-0 right-0 mb1 mr2 text-size">{this.props.output.length} {this.state.format}</div> }
+            { !this.state.isHidden && <div className="absolute bottom-0 right-0 mb1 mr2 text-size">{this.state.vanillaJSCode.length} {this.state.format}</div> }
         </div>;
     }
     componentDidUpdate() {
-        this.ace.editor.getSession().setValue(this.props.output);
+        this.ace.editor.getSession().setValue(this.state.vanillaJSCode);
     }
 
     componentWillReceiveProps(prevProps, prevState) {
-        let outputPlainText = this.props.output;
+        let outputPlainText = prevProps.output;
         this.setState({
-            format :formatService.sizeFormatSuffix(outputPlainText.length)
+            format :formatService.sizeFormatSuffix(outputPlainText.length),
+            vanillaJSCode: aceConnector.doSomething(this.props.output)
         });
         if (prevProps.aceOptions) { // set ace editor option
             aceConnector.setAceOption(this.ace, prevProps, prevState);

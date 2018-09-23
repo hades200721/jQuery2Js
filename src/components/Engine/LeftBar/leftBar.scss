@@ -1,5 +1,7 @@
+@import '../../../assets/sass/Constants';
+
 .left-panel {
-    background-color: rgb(33, 37, 43);
+    background-color: $left-panel-background-color;
     color: rgb(157, 165, 180);
     display: grid;
     font-family: monospace;
@@ -19,7 +21,7 @@
 .footer {
     width: inherit;
     .footer-info {
-        background-color: rgb(24, 26, 31);
+        background-color: $footer-inner-background-color;
         padding: 0.5rem 1.5rem;
     }
 }
@@ -37,8 +39,8 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background-color: rgb(33, 37, 43);
-    color: rgb(157, 165, 180);
+    background-color: $left-panel-button-background-color;
+    color: $left-panel-button-color;
 }
 
 .closed .slide-btn:hover {

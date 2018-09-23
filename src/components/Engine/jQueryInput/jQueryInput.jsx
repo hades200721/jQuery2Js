@@ -9,7 +9,6 @@ import 'brace/theme/tomorrow';
 import jQueryInputStyles from "./jQueryInput.scss";
 
 var aceConnector = require('../../../services/aceConnector');
-let formatService = require('../../../services/formatService');
 let generalServices = require('../../../services/generalServices');
 
 export default class Jqueryinput extends React.Component {
@@ -17,16 +16,14 @@ export default class Jqueryinput extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            format: 'Bytes'
+            format: 'Bytes',
+            jqCode: 'ttttttttttttttttttttt'
         };
-        this.onChange = this.onChange.bind(this);
+        this.onJQCodeChange = this.onJQCodeChange.bind(this);
     }
 
-    onChange(text, event) {
-        this.props.onTextChange(text);
-        this.setState({
-            format :formatService.sizeFormatSuffix(text.length)
-        });
+    onJQCodeChange(text) {
+        generalServices.onChanged.call(this, text);
     }
 
     render() {
@@ -34,15 +31,14 @@ export default class Jqueryinput extends React.Component {
             <AceEditor
                 mode="javascript"
                 theme="tomorrow"
-                onChange={this.onChange}
+                onChange={this.onJQCodeChange}
                 name="jQueryInputEditor"
                 style={{height: '100%', width: 'auto', fontSize: '16px'}}
                 editorProps={{ $blockScrolling: true }}
-                debounceChangePeriod={100}
-                value={this.props.textVal}
+                value={this.state.jqCode}
                 ref={instance => { this.ace = instance; }} // Let's put things into scope
             />
-            { !this.state.isHidden && <div className="absolute bottom-0 right-0 mb1 mr2 text-size text-size">{this.props.textVal.length} {this.state.format}</div> }
+            { !this.state.isHidden && <div className="absolute bottom-0 right-0 mb1 mr2 text-size text-size">{this.state.jqCode.length} {this.state.format}</div> }
         </div>;
     }
     

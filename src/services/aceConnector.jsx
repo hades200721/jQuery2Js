@@ -1,6 +1,11 @@
-let doSomething = function (num) {
+/**
+ *
+ * @param inputJQueryCode plain text with jQuery
+ * @returns string vanilla javascript code
+ */
+let doSomething = function (inputJQueryCode) {
     
-    return num + 1;
+    return inputJQueryCode + '1';
 };
 
 /**
@@ -44,7 +49,10 @@ let setAceOption = function (ace, prevProps) {
             ace.editor.setOption('enableSnippets', val);
             break;
         }
-        
+        case 'fontSize': {
+            ace.editor.setOption('fontSize', val);
+            break;
+        }
         default: {
             break;
         }
