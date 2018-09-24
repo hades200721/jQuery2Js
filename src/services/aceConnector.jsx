@@ -53,6 +53,11 @@ let setAceOption = function (ace, prevProps) {
             ace.editor.setOption('fontSize', val);
             break;
         }
+        case 'Theme': {
+            let newThemeName = 'ace/theme/' + val;
+            ace.editor.setTheme(newThemeName);
+            break;
+        }
         default: {
             break;
         }

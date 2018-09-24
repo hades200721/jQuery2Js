@@ -49,7 +49,8 @@ export default class LeftBar extends React.Component {
                         {key: 'enableSnippets', label: 'Enable Snippets', value: false},
                         {key: 'fontSize', label: 'Font Size', type: 'number', value: 24},
                         {key: 'showFileSize', label: 'Show File Size', customFunction: { name: 'showFileSize', args: {} }, value: true},
-                        {key: 'Theme', label: 'Theme', type: 'dropDown', value: 'dark'}]                    }
+                        {key: 'Theme', label: 'Theme', type: 'dropDown', value: 'tomorrow_night'}]
+                    }
                               toggleCheckbox={(prop, value, customF) => this.toggleCheckbox(prop, value, customF) }> </DropDown>
                 </div>
             )}

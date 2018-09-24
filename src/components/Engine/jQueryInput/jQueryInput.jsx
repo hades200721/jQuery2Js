@@ -6,6 +6,8 @@ import 'brace/snippets/html';
 import 'brace/ext/language_tools';
 import 'brace/mode/javascript';
 import 'brace/theme/tomorrow';
+import 'brace/theme/tomorrow_night';
+import 'brace/theme/monokai';
 import jQueryInputStyles from "./jQueryInput.scss";
 
 var aceConnector = require('../../../services/aceConnector');
@@ -30,7 +32,7 @@ export default class Jqueryinput extends React.Component {
         return <div className="z1 relative editor-container">
             <AceEditor
                 mode="javascript"
-                theme="tomorrow"
+                theme="tomorrow_night"
                 onChange={this.onJQCodeChange}
                 name="jQueryInputEditor"
                 style={{height: '100%', width: 'auto', fontSize: '16px'}}

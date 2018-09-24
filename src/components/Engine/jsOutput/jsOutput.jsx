@@ -5,7 +5,6 @@ import AceEditor from 'react-ace';
 import 'brace/snippets/html';
 import 'brace/ext/language_tools';
 import 'brace/mode/javascript';
-import 'brace/theme/tomorrow';
 import jsOutputStyles from "./jsOutput.scss";
 let aceConnector = require('../../../services/aceConnector');
 let formatService = require('../../../services/formatService');
@@ -26,7 +25,7 @@ export default class Jsoutput extends React.Component {
         return <div className="relative output-container">
             <AceEditor
                 mode="javascript"
-                theme="tomorrow"
+                theme="tomorrow_night"
                 readOnly={true}
                 name="JSOutputEditor"
                 style={{ height: '100%', width: 'auto', fontSize: '16px' }}
