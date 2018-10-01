@@ -9,6 +9,7 @@ export default class Engine extends React.Component {
 		super(props);
 		this.state = {
 			opened: true,
+            previousText: '',
 			textOutput: '',
 			aceOptions: {},
             customFunction: {}
@@ -41,8 +42,9 @@ export default class Engine extends React.Component {
         });
 	}
 
-	textChanged(val) {
+	textChanged(val, oldVal) {
 		this.setState({
+			previousText: oldVal,
 			textOutput: val
 		});
 	}
@@ -54,7 +56,7 @@ export default class Engine extends React.Component {
 					 modifiedEditor={this.setAceEditor.bind(this)}></LeftBar>
 			<Jqueryinput aceOptions={this.state.aceOptions} customFunction={this.state.customFunction}
 						onTextChange={this.textChanged.bind(this)} />
-			<Jsoutput aceOptions={this.state.aceOptions} customFunction={this.state.customFunction} output={this.state.textOutput} />
+			<Jsoutput aceOptions={this.state.aceOptions} customFunction={this.state.customFunction} output={this.state.textOutput} previousText={this.state.previousText} />
 		</div>;
 	}
 }

@@ -47,7 +47,7 @@ export default class LeftBar extends React.Component {
                     <DropDown title="Advanced setting" options={[
                         {key: 'autocompletion', label: 'Basic Autocomplete', value: false},
                         {key: 'enableSnippets', label: 'Enable Snippets', value: false},
-                        {key: 'fontSize', label: 'Font Size', type: 'number', value: 24},
+                        {key: 'fontSize', label: 'Font Size', type: 'number', value: 18},
                         {key: 'showFileSize', label: 'Show File Size', customFunction: { name: 'showFileSize', args: {} }, value: true},
                         {key: 'Theme', label: 'Theme', type: 'dropDown', value: 'tomorrow_night'}]
                     }

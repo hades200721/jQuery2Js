@@ -28,7 +28,7 @@ export default class Jsoutput extends React.Component {
                 theme="tomorrow_night"
                 readOnly={true}
                 name="JSOutputEditor"
-                style={{ height: '100%', width: 'auto', fontSize: '16px' }}
+                style={{ height: '100%', width: 'auto', fontSize: '18px' }}
                 editorProps={{ $blockScrolling: true }}
                 ref={instance => { this.ace = instance; }} // Let's put things into scope
             />
@@ -40,10 +40,10 @@ export default class Jsoutput extends React.Component {
     }
 
     componentWillReceiveProps(prevProps, prevState) {
-        let outputPlainText = prevProps.output;
+        let outputJSCode = aceConnector.compileToJS(this.state.vanillaJSCode, prevProps.output, prevProps.previousText);
         this.setState({
-            format :formatService.sizeFormatSuffix(outputPlainText.length),
-            vanillaJSCode: aceConnector.doSomething(this.props.output)
+            format :formatService.sizeFormatSuffix(outputJSCode.length),
+            vanillaJSCode: outputJSCode
         });
         if (prevProps.aceOptions) { // set ace editor option
             aceConnector.setAceOption(this.ace, prevProps, prevState);

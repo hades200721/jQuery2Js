@@ -68,18 +68,19 @@ export default class DropDown extends React.Component {
         let inputTypeObject = InputTypesObjects[inputType];
         switch (inputType) {
             case 'checkbox':
-                return <label className="c-pointer" key={this.props.options[index].key}>
-                    <input type={inputTypeObject.type}
-                           className={inputTypeObject.className}
-                           label={this.props.options[index].label}
-                           customfunction={this.props.options[index].customFunction}
-                           checked={this.state.options[index].value}
-                           val={this.state.options[index].key}
-                           onChange={(event) => this.toggleCheckbox(event, index)}/>
-                    {this.props.options[index].label}
-                </label>;
+                return <div className="row" key={this.props.options[index].key}><label className="c-pointer">
+                            <input type={inputTypeObject.type}
+                                   className={inputTypeObject.className}
+                                   label={this.props.options[index].label}
+                                   customfunction={this.props.options[index].customFunction}
+                                   checked={this.state.options[index].value}
+                                   val={this.state.options[index].key}
+                                   onChange={(event) => this.toggleCheckbox(event, index)}/>
+                            {this.props.options[index].label}
+                            </label>
+                        </div>;
             case 'number':
-                return <div key={this.props.options[index].key}>
+                return <div className="row" key={this.props.options[index].key}>
                     <label className="ml2 pl1 c-pointer" htmlFor={this.props.options[index].key}> {this.props.options[index].label}
                     </label>
                     <input name={this.props.options[index].key}
@@ -93,8 +94,8 @@ export default class DropDown extends React.Component {
 
                 </div>;
             case 'dropDown':
-                return <div key={this.props.options[index].key}>
-                    <label className="ml2 pl1 c-pointer" htmlFor={this.props.options[index].key}> {this.props.options[index].label}
+                return <div className="row" key={this.props.options[index].key}>
+                    <label className="ml2 pl1 mr1 c-pointer" htmlFor={this.props.options[index].key}> {this.props.options[index].label}
                     </label>
                     <select name={this.props.options[index].key} value={this.state.options[index].value}
                             type={inputTypeObject.type}

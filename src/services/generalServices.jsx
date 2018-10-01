@@ -26,8 +26,8 @@ let minifyCode = function(text) {
         });
 };
 
-let onChanged = function (text) {
-    this.props.onTextChange(text);
+let onChanged = function (text, previousText) {
+    this.props.onTextChange(text, previousText);
     this.setState({
         format :formatService.sizeFormatSuffix(text.length),
         jqCode: text

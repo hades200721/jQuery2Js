@@ -19,13 +19,13 @@ export default class Jqueryinput extends React.Component {
         super(props);
         this.state = {
             format: 'Bytes',
-            jqCode: 'ttttttttttttttttttttt'
+            jqCode: ''
         };
         this.onJQCodeChange = this.onJQCodeChange.bind(this);
     }
 
     onJQCodeChange(text) {
-        generalServices.onChanged.call(this, text);
+        generalServices.onChanged.call(this, text, this.state.jqCode);
     }
 
     render() {
@@ -35,7 +35,7 @@ export default class Jqueryinput extends React.Component {
                 theme="tomorrow_night"
                 onChange={this.onJQCodeChange}
                 name="jQueryInputEditor"
-                style={{height: '100%', width: 'auto', fontSize: '16px'}}
+                style={{height: '100%', width: 'auto', fontSize: '18px'}}
                 editorProps={{ $blockScrolling: true }}
                 value={this.state.jqCode}
                 ref={instance => { this.ace = instance; }} // Let's put things into scope
